@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Show</title>
+        <style>
+body { margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+}
+.new{overflow: hidden;
+background-color: #1a1a1a;
+text-align: center;
+-webkit-text-fill-color: #ddd;
+}
+.topnav {
+overflow: hidden;
+background-color: #2C3E50;}
+.topnav a {float: left;
+color: #f2f2f2;
+text-align: center; padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+.topnav a:hover {
+background-color: #ddd;
+color: black; }
+            
+.topnav a.active {
+background-color: #25aa0434;
+color: white;}
+
+.topnav .search-container{float: right;}
+.topnav input[type=text]{padding: 6px;margin-top: 8px;font-size: 17px; border: salmon;}
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.show{
+  padding: 16px;
+  text-align: left;
+  font-size: x-large;
+}
+
+.venue-container{background-color: aqua;
+  display: inline-block;
+  font-style: normal; 
+  width: 200px;
+  text-align: left;
+  position: relative;
+  height: 250px;
+  border: 1px solid #34495E;
+  margin: 20px 0px;
+
+}
+.available-show .edit_venue .delete-venue{
+  text-align: right;
+}
+.capacity .venuelocation{
+  
+  border-radius:auto;
+  border:1px solid hsl(128, 61%, 44%);
+  position: relative;
+}
+        </style>
+    </head>
+<body>
+    <div class="new">
+        <h1>Welcome </h1>
+    </div>
+      <div class="topnav">
+        <a class="active", href="/">Home</a>
+        <a class="addvenue" href="/addvenue/{{admin.admin_id}}">Add Venue</a>
+        <a class="Summary" href="#">Summary</a>
+        <a class="logout" href="/admin/login">logout</a>
+    </div>
+    </div>
+    <div class="show">
+      <b>Available Venues</b>
+      <div>
+        {%for venue in venues%}
+        <div class="venue-container" >
+         <!-- <img class="###" src="https://picsum.photos/150" alt="Card imafe cap">-->
+          <div class="venue-name" >{{venue["venue_name"]}}</div>
+          <div  class="available-show"  style="color: blue;" ><a  href="/adminshows/{{venue['venue_id']}}/{{admin.admin_id}}"><b >Available Shows</b></a></div>
+          <div  class="edit_venue"  style="color: blue;" ><a  href="/edit/{{venue.venue_id}}/{{admin.admin_id}}"><b >Edit Venue</b></a></div>
+          <div  class="delete-venue"  style="color: blue;" ><a  href="/remove/{{venue.venue_id}}/{{admin.admin_id}}"><b >Delete Venue</b></a></div>
+        </div>
+        {%endfor%}
+       
+      </div>
+    </div>
+</body>
+</html>

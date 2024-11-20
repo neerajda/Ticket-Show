@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Show</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    </head>
+<body>
+    <div class="new">
+        <h1>Welcome </h1>
+    </div>
+      <div class="topnav">
+        <a class="active", href="/">Home</a>
+        <a class="addvenue" href="/addvenue/{{admin.admin_id}}">Add Venue</a>
+        <a class="Summary" href="#">Summary</a>
+        <a class="logout" href="/admin/login">logout</a>
+    </div>
+    </div>
+    <div class="show">
+      <b>Available Venues</b>
+      <div>
+        {%for venue in venues%}
+        <div class="venue-container2" >
+         <!-- <img class="###" src="https://picsum.photos/150" alt="Card imafe cap">-->
+          <div class="venue-name" >{{venue["venue_name"]}}</div>
+          <div  class="available-show2"  style="color: blue;" ><a  href="/adminshows/{{venue['venue_id']}}/{{admin.admin_id}}"><b >Available Shows</b></a></div>
+          <div  class="edit_venue"  style="color: blue;" ><a  href="/edit/{{venue.venue_id}}/{{admin.admin_id}}"><b >Edit Venue</b></a></div>
+          <div  class="delete-venue"  style="color: blue;" ><a  href="/remove/{{venue.venue_id}}/{{admin.admin_id}}"><b >Delete Venue</b></a></div>
+        </div>
+        {%endfor%}
+       
+      </div>
+    </div>
+</body>
+</html>

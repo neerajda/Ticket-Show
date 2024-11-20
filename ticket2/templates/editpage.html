@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Show</title>
+        <style>
+            body {
+              margin: 0;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+            .new{overflow: hidden;
+                background-color: #1a1a1a;
+                text-align: center;
+                -webkit-text-fill-color: #ddd;
+
+            }
+            
+            
+            
+            .topnav {
+              overflow: hidden;
+              background-color: #2C3E50;
+            }
+            
+            .topnav a {
+              float: left;
+              color: #f2f2f2;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+              font-size: 17px;
+            }
+            
+            .topnav a:hover {
+              background-color: #ddd;
+              color: black;
+            }
+            
+            .topnav a.active {
+              background-color: #25aa0434;
+              color: white;
+            }
+
+            .topnav .current-time{
+                float: right;
+                font-size: large;
+            }
+            .topnav input[type=text]{
+                         padding: 6px;
+                          margin-top: 8px;
+                         font-size: 17px;
+                         border: salmon;
+            }
+            .topnav .current-time {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.show{
+  padding: 16px;
+  text-align: left;
+  font-size: x-large;
+}
+
+.venue-container{background-color: aqua;
+  display: inline-block;
+  font-style: normal; 
+  padding: 12px 10px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  position: relative;
+  height: 250px;
+  border: 1px solid #34495E;
+
+}
+
+
+
+
+.available-show{
+  margin: 45% 0%;
+  border: .5px solid white;
+  
+}
+.capacity .venuelocation{
+  
+  border-radius:auto;
+  border:1px solid hsl(128, 61%, 44%);
+  position: relative;
+}
+.container{
+width:400px;
+  background: #2C3E50;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: left;
+  padding: 0 30px 30px;
+  color: white;
+  display: block;
+  
+       }
+input[type=text], input[type=password],input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button[type=submit]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+
+  box-sizing: border-box;
+  background-color: #04AA6D;
+}
+button[type=submit]:hover {
+  background-color: green;
+  font-size: large;
+}
+
+
+
+            </style>
+    </head>
+<body>
+    <div class="new">
+        <h1>Edit Venue</h1>
+    </div>
+    
+
+    <div class="topnav">
+        <a  href="/">Home</a>
+  
+        <a  href="#">Profile</a>
+        <div class="current-time" id="current-time">
+       
+          </div>
+    </div>
+    <div class="show">
+      <b></b>
+      <div class="container">
+      <form method="post" action="/edit/{{venue.venue_id}}/{{admin_id}}">
+      Change Venue Name<input name="new_venue_name"  type="text" placeholder="Venue Name" required>
+     Change Location<input name="new_venue_location" type="text" placeholder="Location">
+      Change Capacity<input name="new_venue_capacity"  type="number">
+      <button type="submit"><b>Add</b></button>
+    <script>
+      let time = document.getElementById("current-time");
+     setInterval(()=>{ 
+      let d = new Date()
+    time.innerHTML=d.toLocaleTimeString();},1000)
+    
+    </script>
+</body>
+</html>

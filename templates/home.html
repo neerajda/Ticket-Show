@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Show</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    </head>
+<body>
+    <div class="new">
+        <h1>Welcome </h1>
+    </div>
+    <div class="topnav">
+        <a class="active", href="#">Home</a>
+      
+        <a  href="/user/login">User Login</a>
+        <a  href="/admin/login">Admin Login</a>
+        <div class="search-container">
+            <form method="POST" action="/search">
+                <input type="text", name="search",placeholder="Venues location,show tags,rating">
+                <button type="submit">Search</button>
+            </form>
+          </div>
+    </div>
+    <div class="show">
+      <b>Available Venues</b>
+      <div>
+        {%for venue in venues%}
+        <div class="venue-container" >
+         <!-- <img class="###" src="https://picsum.photos/150" alt="Card imafe cap">-->
+          
+          <div class="venue-name" >Venue:{{venue["venue_name"]}}</div>
+          <div class="capacity">Capacity:{{venue["venue_capacity"]}}</div>
+          <div class="venuelocation">Address:{{venue["venue_location"]}}</div>
+         
+          <div  class="available-show"  style="color: #ff0000;" ><a  href="/shows/{{venue['venue_id']}}"><b >Available Shows</b></a></div>
+        </div>
+       
+        {%endfor%}
+        
+      </div>
+    </div>
+</body>
+</html>

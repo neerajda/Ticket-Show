@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Show</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+<body>
+    <div>
+        <div class="venue">
+            
+            <div class="venuename"> {{venue.venue_name}}</div>
+            <div class="location">
+                
+                <a>Address:{{venue.venue_location}}</a>
+            </div>
+            <div class="capacity">Capacity: {{venue.venue_capacity}}</div>           
+            
+
+        </div>
+        {%for show in shows%}
+        <div class="show-header">
+                <div class="show-name">Show name:{{show["show_name"]}}</div>
+                <div class="rating">Rating:{{show["show_rating"]}}</div>
+                <div><a class="price">ticketprice: {{show["ticketprice"]}}</a></div>
+                <div class="book">
+                 <a href="/booking/{{venue.venue_id}}/{{show.show_id}}"><b>BOOK NOW</b></a>
+                  </div>
+          
+        </div>
+        {%endfor%}
+    </div>
+   
+</body>
