@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Show</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+        
+      </head>
+<body>
+    <div class="new">
+        <h1>Welcome {{q["username"]}}</h1>
+    </div>
+    <div class="topnav">
+        <a class="active", href="#">{{q["username"]}}</a>
+        <a  href="/">Home</a>
+        <a  href="#">Profile</a>
+        <a  href="/user/login">logout</a>
+        <div class="search-container">
+            <form>
+                <input type="text", placeholder="Search for Venues, Shows",name="search">
+                <button type="submit">Search</i></button>
+            </form>
+          </div>
+    </div>
+    <div class="show">
+      <b>Available Venues</b>
+      <div>
+        {%for venue in venues%}
+        <div class="venue-container" >
+          <div class="venue-name" >{{venue["venue_name"]}}</div>
+          <div class="venuelocation">{{venue["venue_location"]}}</div>
+          <div class="capacity">{{venue["venue_capacity"]}}</div>
+          <div  class="available-show"  style="color: #ff0000;" ><a  href="/shows/{{venue['venue_id']}}"><b >Available Shows</b></a></div>
+        </div>
+       
+        {%endfor%}
+        
+      </div>
+    </div>
+</body>
+</html>

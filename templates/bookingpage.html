@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket Show</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+        <style>
+          input[type=text], input[type=password],input[type=number] {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+button[type=submit]{
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+
+box-sizing: border-box;
+background-color: #04AA6D;
+}
+button[type=submit]:hover {
+background-color: green;
+font-size: large;
+}
+        </style>
+      </head>
+<body>
+    <div class="new">
+        <h1>BOOK YOUR SHOW</h1>
+    </div>
+    
+
+    <div class="topnav">
+        <a  href="/">Home</a>
+  
+        <a  href="#">Profile</a>
+        <div class="current-time" id="current-time">
+       
+          </div>
+    </div>
+    <div class="show">
+      <b></b>
+      <div class="container2">
+      <form method="post" action="/booked/{{venue.venue_id}}/{{show.show_id}}">
+
+      Username<input name="u_name"  type="text" placeholder="username" required>
+     
+      Password<input name="password" type="password" placeholder="Password"  required>
+      Number<input name="number_tickts" type="number" placeholder="Number of tickets">
+      
+      Price:<input name="ticket_price"  type="number">
+      Total:<input name="totaltickets_price"  type="number">
+    
+      <button type="submit"><b>Now Book</b></button>
+        </form>
+        
+      </div>
+    </div>
+    <script>
+      let time = document.getElementById("current-time");
+     setInterval(()=>{ 
+      let d = new Date()
+    time.innerHTML=d.toLocaleTimeString();},1000)
+    
+    </script>
+</body>
+</html>
